@@ -1,0 +1,36 @@
+datasource:
+  username: scott
+  password: tiger
+  connection: |
+    (DESCRIPTION =
+      (ADDRESS =
+        (PROTOCOL = TCP)
+        (HOST = mydbserver.example.com)
+        (PORT = 1521)
+      )
+      (CONNECT_DATA =
+        (SERVER = DEDICATED)
+        (SERVICE_NAME = ORCLPDB)
+      )
+    )
+  fetchsize: 500
+  charset: AL32UTF8
+
+query: |
+  SELECT *
+    FROM DATATABLE
+   WHERE REGDT >= TO_DATE(:start_dt, 'YYYY-MM-DD')
+     AND REGDT < TO_DATE(:end_dt, 'YYYY-MM-DD')
+
+params:
+  start_dt: 2021-01-01
+  end_dt: 2021-02-01
+
+output:
+  file: __stdout__
+  log: __stderr__
+  header: true
+  quote: auto
+  colsep: ","
+  rowsep: "\r\n"
+  dateformat: %Y-%m-%d %H:%M:%S

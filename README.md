@@ -10,7 +10,7 @@ Export oracle database to text file.
 
 ## Usage
 
-> <code>__oracsv__ [ __-vhq__ ] [ __-D__ ___param-name___=___param-value___ ... ] ___task-config-file___</code>
+> <code>__oracsv__ [ __-vhq__ ] [ __-D__ ___name___=___value___ ... ] [ ___task-config-file___ ]</code>
 
 Command line options
 
@@ -18,10 +18,11 @@ Command line options
 * __```-h```__ : print help text and exit.
 * __```-q```__ : suppress log output.
 * __```-D```__ : specify task configuration value.
+* ___task-config-file___ : config file name. (```-``` means stdin)
 
 ```oracvs``` uses three files.
 
-* Task configuration file (```-``` means stdin)
+* Task configuration file
 * Output file (stdout)
 * Log file (stderr)
 
